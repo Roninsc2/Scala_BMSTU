@@ -51,11 +51,23 @@ class LineEq[T](a: List[T], x: List[T], b: T) {
 }
 
 object TestCoeff extends App {
+  //1*3 + 1*3 + 1*3 < 10
   val a = List(1, 1, 1)
   val x = List(3, 3, 3)
-  val b = 4
   val l = new LineEq(a, x, 10);
-  println(l.calc())
+  println(l.calc()) //true
+
+  // (t && t) || (t && f) || (t && f) < t
+  val a1 = List(true, false, false)
+  val x1 = List(true, true, true)
+  val l1 = new LineEq(a1, x1, true);
+  println(l1.calc()) //false
+
+  // (t && f) || (t && f) || (t && f) < t
+  val a2 = List(true, false, false)
+  val x2 = List(false, true, true)
+  val l2 = new LineEq(a2, x2, true);
+  println(l2.calc()) //true
 }
 
 
